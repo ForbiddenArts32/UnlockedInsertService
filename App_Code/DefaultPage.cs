@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace UnlockedInsertService
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class DefaultPage : System.Web.UI.Page
     {
         protected ulong? _LoggedInUserId = null;
 

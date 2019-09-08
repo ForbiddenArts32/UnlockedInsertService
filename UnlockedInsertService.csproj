@@ -66,20 +66,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="api\whitelist.ashx.cs">
-      <DependentUpon>whitelist.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Code\AssetPageInfo.cs" />
-    <Compile Include="App_Code\AssetIdCache.cs" />
-    <Compile Include="App_Code\Secrets.cs" />
-    <Compile Include="App_Code\AssetBot.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Content Include="App_Code\AssetPageInfo.cs" />
+    <Content Include="App_Code\AssetIdCache.cs" />
+    <Content Include="App_Code\DefaultPage.cs">
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
+    </Content>
+    <Content Include="App_Code\Secrets.cs" />
+    <Content Include="App_Code\AssetBot.cs" />
+    <Content Include="App_Code\WhitelistHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
