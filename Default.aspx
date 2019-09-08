@@ -11,8 +11,8 @@
     <div class="UiContentBox">
         <% if (_LoggedInUserId.HasValue) { %>
         <h1>You're good to go!</h1>
-        <p>You can now use this server to bypass <a href="https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset">InsertService restrictions</a>!</p>
-        <p>To use this in your game, <a href="https://www.roblox.com/catalog/198858951">take the Model</a> and put it into your game's ServerScriptService. Then configure it to point at this server.</p>
+        <p>This server can now help you bypass InsertService restrictions!</p>
+        <p>Please continue reading the guide so you can complete the setup process.</p>
         <p><strong>Your user ID is <%=_LoggedInUserId.Value.ToString() %></strong></p>
         <% } else { %>
         <h1>The server cannot log into Roblox.</h1>
