@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="whitelist.ashx.cs" Class="UnlockedInsertService.WhitelistHandler" %>
+﻿<%@ WebHandler Language="C#" Class="UnlockedInsertService.WhitelistHandler" %>

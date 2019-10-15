@@ -66,14 +66,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\AssetPageInfo.cs" />
-    <Content Include="App_Code\AssetIdCache.cs" />
-    <Content Include="App_Code\DefaultPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="App_Code\Secrets.cs" />
-    <Content Include="App_Code\AssetBot.cs" />
-    <Content Include="App_Code\WhitelistHandler.cs" />
+    <Content Include="App_Code\UnlockedInsertServiceServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
