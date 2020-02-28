@@ -31,12 +31,16 @@ namespace UnlockedInsertService
                     if (!info.IsOnSale)
                         throw new Exception("The asset cannot be obtained!");
 
-                    string requestString = string.Format(TakeItemUrl, info.ProductId, info.SellerId);
+                    string requestString = string.Format(TakeItemUrl, info.ProductId /*, info.SellerId*/);
+                    string payload = string.Format(
+                        "{{\"expectedCurrency\":1,\"expectedPrice\":{1},\"expectedSellerId\":{0}}}",
+                        info.SellerId, 0);
                     using (WebClient client = NewPseudoHumanClient())
                     {
                         client.Headers["X-CSRF-TOKEN"] = info.XcsrfToken;
+                        client.Headers["content-type"] = "application/json; charset=utf-8";
 
-                        client.UploadString(requestString, "");
+                        client.UploadString(requestString, payload);
                         Debug.WriteLine("Whitelisted " + assetId + ".");
                         WhitelistCache[assetId] = new AssetIdCache(assetId, assetId, DateTime.UtcNow + new TimeSpan(1, 0, 0, 0));
                         return assetId;
@@ -65,7 +69,8 @@ namespace UnlockedInsertService
         }
 
         private const string TakeItemUrl =
-            "https://www.roblox.com/api/item.ashx?rqtype=purchase&productID={0}&expectedCurrency=1&expectedPrice=0&expectedSellerID={1}&userAssetID=";
+            //"https://www.roblox.com/api/item.ashx?rqtype=purchase&productID={0}&expectedCurrency=1&expectedPrice=0&expectedSellerID={1}&userAssetID=";
+            "https://economy.roblox.com/v1/purchases/products/{0}";
 
         // RAM-Based cache that helps prevent spamming the Roblox website with the same asset IDs.
         private static readonly Dictionary<ulong, AssetIdCache> WhitelistCache = new Dictionary<ulong, AssetIdCache>();
