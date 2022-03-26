@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Web;
 using System.Configuration;
+using System.Text.Json;
 
 namespace UnlockedInsertService
 {
@@ -62,10 +63,17 @@ namespace UnlockedInsertService
         {
             using (WebClient client = NewPseudoHumanClient())
             {
-                string response = client.DownloadString("https://assetgame.roblox.com/game/GetCurrentUser.ashx");
-                ulong userId;
-                return ulong.TryParse(response, out userId) ? userId : (ulong?)null;
-            }
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                string response = client.DownloadString("https://users.roblox.com/v1/users/authenticated");
+                parsedRootObject parsed = JsonSerializer.Deserialize<parsedRootObject>(response);
+                return parsed.id;
+            };
+        }
+        public class parsedRootObject
+        {
+            public ulong id { get; set; }
+            public string Name { get; set; }
+            public string DisplayName { get; set; }
         }
 
         private const string TakeItemUrl =
