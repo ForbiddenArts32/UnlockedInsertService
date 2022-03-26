@@ -67,7 +67,7 @@ namespace UnlockedInsertService
                 string response = client.DownloadString("https://users.roblox.com/v1/users/authenticated");
                 parsedRootObject parsed = JsonSerializer.Deserialize<parsedRootObject>(response);
                 return parsed.id;
-            };
+            }
         }
         public class parsedRootObject
         {
